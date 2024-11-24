@@ -19,31 +19,23 @@
         android:layout_marginBottom="16dp">
 
         <Button
-            android:id="@+id/buttonMenu1"
+            android:id="@+id/buttonBack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Menu 1"
+            android:text="Back"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/colorPrimary" />
 
         <Button
-            android:id="@+id/buttonMenu2"
+            android:id="@+id/buttonNext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Menu 2"
+            android:text="Next"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/colorPressed" />
 
-        <Button
-            android:id="@+id/buttonMenu3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Menu 3"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/colorPrimary" />
     </LinearLayout>
 
     <!-- Image below the menu buttons -->

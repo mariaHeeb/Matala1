@@ -19,7 +19,7 @@ public class ProfileActivity1 extends AppCompatActivity {
     private TextView textLikeCounter;
     private int likeCount = 0;
     private boolean isLiked = false;
-    private Button buttonMenu1, buttonMenu2, buttonMenu3;
+    private Button buttonBack, buttonNext;
     private ImageView imageView;
     private TextView textPhoneNumber, textEmail, textHopes;
 
@@ -31,9 +31,9 @@ public class ProfileActivity1 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile1);
 
-        buttonMenu1 = findViewById(R.id.buttonMenu1);
-        buttonMenu2 = findViewById(R.id.buttonMenu2);
-        buttonMenu3 = findViewById(R.id.buttonMenu3);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonNext = findViewById(R.id.buttonNext);
+        //buttonMenu3 = findViewById(R.id.buttonMenu3);
         imageView = findViewById(R.id.imageView);
         textPhoneNumber = findViewById(R.id.textPhoneNumber);
         textEmail = findViewById(R.id.textEmail);
@@ -44,27 +44,27 @@ public class ProfileActivity1 extends AppCompatActivity {
         textHopes.setText("Hopes: acting");
 
 
-        buttonMenu1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity1.this, ProfileActivity1.class);
-                startActivity(intent);
-            }
-        });
-        buttonMenu2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity1.this, ProfileActivity2.class);
-                startActivity(intent);
-            }
-        });
-        buttonMenu3.setOnClickListener(new View.OnClickListener() {
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity1.this, ProfileActivity3.class);
                 startActivity(intent);
             }
         });
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity1.this, ProfileActivity2.class);
+                startActivity(intent);
+            }
+        });
+//        buttonMenu3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ProfileActivity1.this, ProfileActivity3.class);
+//                startActivity(intent);
+//            }
+//        });
 
         buttonLike = findViewById(R.id.buttonLike);
         textLikeCounter = findViewById(R.id.textLikeCounter);
