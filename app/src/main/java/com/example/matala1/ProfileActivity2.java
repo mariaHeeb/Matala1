@@ -14,6 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class ProfileActivity2 extends AppCompatActivity {
+    private Button buttonLike;
+    private TextView textLikeCounter;
+    private int likeCount = 0;
+    private boolean isLiked = false;
     private Button buttonMenu1, buttonMenu2, buttonMenu3;
     private ImageView imageView;
     private TextView textPhoneNumber, textEmail, textHopes ;
@@ -32,9 +36,9 @@ public class ProfileActivity2 extends AppCompatActivity {
         textEmail = findViewById(R.id.textEmail);
         textHopes= findViewById(R.id.textHopes);
 
-        textPhoneNumber.setText("555555555");
-        textEmail.setText("jonyd@gmail.com");
-        textHopes.setText("dancing");
+        textPhoneNumber.setText("Phone number: +975-55555555");
+        textEmail.setText("Email: jonyd@gmail.com");
+        textHopes.setText("Hopes: dancing");
 
 
 
@@ -59,6 +63,29 @@ public class ProfileActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonLike = findViewById(R.id.buttonLike);
+        textLikeCounter = findViewById(R.id.textLikeCounter);
+
+        // Set up the Like button
+        buttonLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                likeCount++; // Increment the counter
+                textLikeCounter.setText("Likes: " + likeCount); // Update the counter display
+            }
+        });
+    }
+
+    // Reset the counter when the activity is exited
+    @Override
+    protected void onStop() {
+        super.onStop();
+        likeCount = 0; // Reset the counter
+        if (textLikeCounter != null) {
+            textLikeCounter.setText("Likes: 0"); // Update the counter display
+        }
+
 
     }
 

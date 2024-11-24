@@ -89,5 +89,43 @@
             android:text="Hopes: Achieve success and make a difference!"
             android:textSize="16sp"
             android:textColor="@android:color/black" />
+
+
     </LinearLayout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Existing UI elements -->
+
+        <Button
+            android:id="@+id/buttonLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Like"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textLikeCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Likes: 0"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/buttonLike"
+            android:layout_centerHorizontal="true" />
+
+        <!-- Other UI elements -->
+
+    </RelativeLayout>
+
+
+
 </LinearLayout>
