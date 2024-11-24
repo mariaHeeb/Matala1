@@ -1,7 +1,10 @@
 package com.example.matala1;
 
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +26,7 @@ public class ProfileActivity2 extends AppCompatActivity {
     private TextView textPhoneNumber, textEmail, textHopes ;
 
 
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +45,43 @@ public class ProfileActivity2 extends AppCompatActivity {
 
 
 
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+        buttonBack.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        buttonBack.setBackgroundColor(getResources().getColor(R.color.colorPressed)); // Red when pressed
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        buttonBack.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue when not pressed
+                        break;
+                }
+                return false;
+            }
+        });
+
+        buttonNext.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        buttonNext.setBackgroundColor(getResources().getColor(R.color.colorPressed)); // Red when pressed
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        buttonNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue when not pressed
+                        break;
+                }
+                return false;
+            }
+        });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity2.this,ProfileActivity1.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right); // Swipe to left
+
             }
         });
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +89,8 @@ public class ProfileActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity2.this,ProfileActivity3.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Swipe to right
+
             }
         });
 
@@ -77,9 +115,24 @@ public class ProfileActivity2 extends AppCompatActivity {
         if (textLikeCounter != null) {
             textLikeCounter.setText("Likes: 0"); // Update the counter display
         }
-
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reset the color of the buttons when the activity is resumed
+        buttonBack.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue
+        buttonNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Reset the color of the buttons when the activity is paused to prevent lingering state
+        buttonBack.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue
+        buttonNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // Blue
+    }
+
 
 
 
